@@ -12,9 +12,16 @@ Model interpretability was assessed using SHAP and Grad-CAM, which highlighted k
 
 Limitations include the use of a single-center dataset and the need for adaptive threshold optimization. Future work will focus on multi-center validation and real-world clinical integration. This study establishes a structured baseline for AI-assisted hematology screening, supporting early detection and improved clinical decision-making.
 
-# Software Requirements
+# Hardware and Software Specifications
 
-The code and data for this study were developed using [Python 3.9.16](https://www.python.org/downloads/release/python-3916/) and [TensorFlow 2.11.0](https://www.tensorflow.org/). Statistical analyses were conducted using [SciPy](https://scipy.org/) (version 1.10.1), [Statsmodels](https://www.statsmodels.org/stable/index.html) (version 0.14.1), and [Scikit-posthocs](https://github.com/maximtrp/scikit-posthocs) (version 0.8.1). Additionally, the Kaggle Notebook illustrating the development and validation of the proposed model is publicly available at [this link](https://www.kaggle.com/code/kasikrit/pm-analysis-train-and-validate).
+All training, evaluation, and inference were performed on an NVIDIA A100-SXM4-80GB GPU running Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-50-generic x86_64). Dataset preparation, visualization, and presentation tasks were carried out on macOS 14.7.4 (23H420).
+
+The code and data used in this study were developed using [Python 3.9.16](https://www.python.org/downloads/release/python-3916/) and [TensorFlow 2.11.0](https://www.tensorflow.org/).
+
+For evaluation metrics such as AUROC, calibration plots, logistic regression, isotonic regression, Brier score loss, and R² score, we used [scikit-learn](https://scikit-learn.org/1.3/preface.html) (version 1.3.2) and [SciPy](https://docs.scipy.org/doc/scipy-1.11.4/) (version 1.11.4).
+
+A complete example demonstrating model development and validation is available on Kaggle:  
+[Kaggle Notebook: Train and Validate the Proposed Model](https://www.kaggle.com/code/kasikrit/pm-analysis-train-and-validate)
 
 
 ## Creating a Python Environment
