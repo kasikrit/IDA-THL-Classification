@@ -3,7 +3,7 @@ The code demonstrates the development of the hybrid AI-based patient-level class
 
 **Manuscript Title:** An AI-Based Decision Support Framework for Clinical Screening of Iron Deficiency Anemia and Thalassemia
 
-**Abstact:**
+**Abstract:**
 
 Iron Deficiency Anemia (IDA) and Thalassemia (THL) are common hematologic disorders requiring efficient and accurate screening for early diagnosis. Traditional blood smear analysis is labor-intensive and subjective, underscoring the need for AI-driven solutions to enhance Sensitivity and Specificity.
 This study introduces a novel hybrid AI-based patient-level classification framework integrating soft voting with optimized probability-based thresholds. The model was trained and validated using a real-world dataset from Hatyai Hospital, Thailand, and evaluated at both the patch and patient levels. The proposed approach achieved 96\% accuracy on the test set, with precision-recall values of 1.00 and 0.83 for IDA and 0.95 and 1.00 for THL, respectively. THL sensitivity reached 1.00 at the patient level, while IDA sensitivity was 0.83. Bayesian probability updates confirmed prediction reliability, yielding post-test probabilities exceeding 99.99\% for IDA and 80\% for THL. The model explained 62.84\% of the variance in patient classifications, demonstrating strong discriminatory power.
