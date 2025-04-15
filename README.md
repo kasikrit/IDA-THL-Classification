@@ -71,7 +71,29 @@ _C.DATA.COLOR = 'BGR'  # Image color format (can be changed to 'RGB' if needed)
 # ===== Model Configuration =====
 _C.MODEL = CN()
 _C.MODEL.NAMES = [
-    'EfficientNetV2S',  # Primary model used; other architectures commented for flexibility
+    'EfficientNetV2S',  # the best performance model found in our work
+    # 'VGG16',
+    # 'VGG19',                      
+    # 'DenseNet121',
+    # 'DenseNet201',
+    # 'MobileNet', 
+    # 'MobileNetV2',      
+    # 'InceptionResNetV2',                
+    # 'InceptionV3',      
+    # 'EfficientNetB7',
+    # 'EfficientNetV2B3',                   
+    # 'ViT_b32',
+    # 'ViT_l16',
+    # 'EfficientNetV2M',    
+    # 'EfficientNetV2L',       
+    # 'ConvNeXtTiny',
+    # 'ConvNeXtSmall',
+    # 'ConvNeXtBase',
+    # 'ConvNeXtLarge',
+    # 'ConvNeXtXLarge',    
+    # 'ResNet50',
+    # 'ResNet50V2',
+    # 'Xception',
 ]
 # _C.MODEL.INFER_FILE_PATH = 'infer-ens-20250302-12THL.csv'  # Optional inference CSV path
 # _C.MODEL.EVA_FILE_PATH = 'Eva-ens-20250302'  # Optional evaluation path
