@@ -1,4 +1,5 @@
-# IDA vs THL Classification
+# Classification for Iron Deficiency Anemia (IDA) and Thalassemia (THL)
+
 The code demonstrates the development of the hybrid AI-based patient-level classification framework—integrating soft voting with optimized probability-based thresholds.
 
 **Manuscript Title:** An AI-Based Decision Support Framework for Clinical Screening of Iron Deficiency Anemia and Thalassemia
