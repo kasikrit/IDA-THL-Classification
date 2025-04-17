@@ -22,7 +22,9 @@ The code and data used in this study were developed using [Python 3.9.16](https:
 For evaluation metrics such as AUROC, calibration plots, logistic regression, isotonic regression, Brier score loss, and R² score, we used [scikit-learn](https://scikit-learn.org/1.3/preface.html) (version 1.3.2), SciPy](https://docs.scipy.org/doc/scipy-1.11.4/) (version 1.11.4) and [Statsmodels](https://www.statsmodels.org/stable/index.html) (version 0.14.1).
 
 A complete example demonstrating model development and validation is available on Kaggle (Python 3.11.11 and TensorFlow 2.12.0):  
-[Kaggle Notebook: IDA-THL-Classification-Phase-I](https://www.kaggle.com/code/kasikrit/ida-thl-classification-phase-i)
+[Kaggle Notebook: Classification for IDA and Thalassemia](https://www.kaggle.com/code/kasikrit/classification-for-ida-and-thalassemia/)
+
+
 
 
 # Creating a Python Environment
