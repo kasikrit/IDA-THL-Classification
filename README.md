@@ -42,8 +42,8 @@ conda activate py39
 pip install TensorFlow==2.11.0 scikit-learn==1.3.2 scipy==1.11.4 statsmodels==0.14.1 vit-keras==0.1.2
 ```
 
-## Avaiable Dataset
-The dataset is publicly available at [10.6084/m9.figshare.28779455](https://doi.org/10.6084/m9.figshare.28779455).
+## Available Dataset
+The dataset will be publicly availabled at [10.6084/m9.figshare.28779455](https://doi.org/10.6084/m9.figshare.28779455).
 
 # Training Models
 
