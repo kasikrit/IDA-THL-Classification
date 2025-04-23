@@ -47,7 +47,9 @@ The dataset will be publicly availabled at [10.6084/m9.figshare.28779455](https:
 
 ## Training Models
 
-1. Set up parameters in configCell.py as descripbed below:
+### 1. Configure Training Parameters
+
+Modify the parameters in [`configsCellDemo.py`](https://github.com/kasikrit/IDA-THL-Classification/blob/main/configsCellDemo.py) as described below:
 
 ```python
 # ===== Platform-Specific Path Configuration =====
@@ -55,7 +57,7 @@ import platform
 
 # Set base path depending on the OS (macOS or Linux)
 if platform.system() == 'Darwin' or platform.system() == 'Linux':
-    _C.BASEPATH = '.'  # Use current directory as base path
+    _C.BASEPATH = '.'  # Use current directory as the base path
 
 # Dataset identifier
 _C.DATA.SET = 'IDA-THL-Dataset-Phase-I'  # Name of the dataset used in this phase
@@ -64,88 +66,156 @@ _C.DATA.SET = 'IDA-THL-Dataset-Phase-I'  # Name of the dataset used in this phas
 _C.DATA.SAVEPATH = os.path.join(_C.BASEPATH, 'models')  # Directory to save trained models
 _C.DATA.C = 3  # Number of image channels (e.g., RGB or BGR)
 _C.DATA.W = _C.DATA.H = 256  # Image width and height
-_C.DATA.IMAGE_SIZE = _C.DATA.W  # Image size used by model input
+_C.DATA.IMAGE_SIZE = _C.DATA.W  # Image size used by the model input
 _C.DATA.DIMENSION = _C.DATA.W, _C.DATA.H, _C.DATA.C  # Full image dimension tuple
-_C.DATA.TEST_SIZE = 0.30  # Proportion of test data split
+_C.DATA.TEST_SIZE = 0.30  # Proportion of the test data split
 _C.DATA.CLASS_LABELS = ['IDA', 'THL']  # Class names
 _C.DATA.CLASSES = [0, 1]  # Numerical class labels
-_C.DATA.CLASSDICT = [(0, "IDA"), (1, "THL")]  # Dictionary mapping for class index and label
-_C.DATA.COLOR = 'BGR'  # Image color format (can be changed to 'RGB' if needed)
-# _C.DATA.COLOR = 'RGB'  # Alternative color format
+_C.DATA.CLASSDICT = [(0, "IDA"), (1, "THL")]  # Mapping between class index and label
+_C.DATA.COLOR = 'BGR'  # Image color format ('BGR' or 'RGB')
+# _C.DATA.COLOR = 'RGB'  # Uncomment to switch to RGB format
 
 # ===== Model Configuration =====
 _C.MODEL = CN()
 _C.MODEL.NAMES = [
-    'EfficientNetV2S',  # the best performance model found in our work
-    # 'VGG16',
-    # 'VGG19',                      
-    # 'DenseNet121',
-    # 'DenseNet201',
-    # 'MobileNet', 
-    # 'MobileNetV2',      
-    # 'InceptionResNetV2',                
-    # 'InceptionV3',      
-    # 'EfficientNetB7',
-    # 'EfficientNetV2B3',                   
-    # 'ViT_b32',
-    # 'ViT_l16',
-    # 'EfficientNetV2M',    
-    # 'EfficientNetV2L',       
-    # 'ConvNeXtTiny',
-    # 'ConvNeXtSmall',
-    # 'ConvNeXtBase',
-    # 'ConvNeXtLarge',
-    # 'ConvNeXtXLarge',    
-    # 'ResNet50',
-    # 'ResNet50V2',
-    # 'Xception',
+    'EfficientNetV2S',  # Best-performing model in this study
+    # Additional models available but commented out
 ]
-# _C.MODEL.INFER_FILE_PATH = 'infer-ens-20250302-12THL.csv'  # Optional inference CSV path
-# _C.MODEL.EVA_FILE_PATH = 'Eva-ens-20250302'  # Optional evaluation path
+# Optional inference or evaluation paths:
+# _C.MODEL.INFER_FILE_PATH = 'infer-ens-20250302-12THL.csv'
+# _C.MODEL.EVA_FILE_PATH = 'Eva-ens-20250302'
 _C.MODEL.NUM_CLASSES = 2  # Number of output classes (IDA, THL)
 
 # ===== Training Configuration =====
 _C.TRAIN = CN()
-_C.TRAIN.Enable = True  # Toggle to enable/disable training
-_C.TRAIN.DATETIME = datetime.now().strftime("%Y%m%d-%H%M")  # Timestamp for training run
+_C.TRAIN.Enable = True  # Enable or disable training
+_C.TRAIN.DATETIME = datetime.now().strftime("%Y%m%d-%H%M")  # Timestamp for the training run
 _C.TRAIN.BATCH_SIZE = 32  # Batch size for training
 _C.TRAIN.LR = 1e-4  # Initial learning rate
 _C.TRAIN.LR_FACTOR = 0.5  # Learning rate reduction factor on plateau
 _C.TRAIN.EPOCHS = 120  # Total number of training epochs
 _C.TRAIN.DROPOUT = 0.4  # Dropout rate to prevent overfitting
-_C.TRAIN.reduceLR_patience = 2  # Epochs with no improvement before reducing LR
-_C.TRAIN.stop_patience = 12  # Epochs with no improvement before early stopping
+_C.TRAIN.reduceLR_patience = 2  # Patience before reducing LR on plateau
+_C.TRAIN.stop_patience = 12  # Patience for early stopping
 _C.TRAIN.VERBOSE = 2  # Verbosity level for training logs
 
-# For ViT (Vision Transformer) architectures
-_C.TRAIN.ACTIVATION = 'gelu'  # Activation function used in the transformer model
+# For Vision Transformer (ViT) models
+_C.TRAIN.ACTIVATION = 'gelu'  # Activation function used in transformer-based models
 
-_C.DATA.VERIFY = False  # Toggle to verify dataset integrity
+_C.DATA.VERIFY = False  # Toggle dataset verification
 # _C.DATA.VERIFY = True  # Enable for dataset verification
 
-# ===== Sampling for Quick Test Runs =====
-# _C.TRAIN.SAMPLE = False  # Disable sampling for full dataset training
-_C.TRAIN.SAMPLE = True  # Enable sampling for development/debugging
+# ===== Sampling for Quick Testing =====
+# _C.TRAIN.SAMPLE = False  # Full dataset training
+_C.TRAIN.SAMPLE = True  # Enable sampling for quick debugging
 if _C.TRAIN.SAMPLE:
     _C.TRAIN.SAMPLE_SIZE = 12  # Number of samples for test run
-    _C.TRAIN.SAMPLE_SIZE_VAL = 0.2  # Validation split for sample set
+    _C.TRAIN.SAMPLE_SIZE_VAL = 0.2  # Validation split for the sample set
     _C.TRAIN.BATCH_SIZE = 1  # Batch size for sample training
     _C.TRAIN.EPOCHS = 2  # Fewer epochs for quicker testing
 
-_C.TRAIN.Evaluate = True  # Toggle to evaluate model after training
+_C.TRAIN.Evaluate = True  # Evaluate the model after training
 _C.SAVE = True  # Enable model checkpoint saving
-# _C.SAVE = False  # Disable saving (useful for dry runs)
-_C.SAVEHIST = True  # Save training history for plotting or further analysis
+# _C.SAVE = False  # Disable saving for dry runs
+_C.SAVEHIST = True  # Save training history for visualization and analysis
 ```
-Usage:
+
+### 2. Import Configuration in [train-cell2-demo.py](https://github.com/kasikrit/IDA-THL-Classification/blob/main/train-cell2-demo.py):
 
 ```python
 import configsCellDemo
 config = configsCellDemo.get_config()
 ```
 
-2. Train models
+### 3. Start Model Training
+Run the following command to begin training:
+
 ```python
 python train-cell2-demo.py
 ``` 
-## Hybrid Approach for Patient-Level Classification
+
+## Patient-Level Classification: Hybrid Threshold Calculation
+
+This section explains how to calculate the optimal probability thresholds for the hybrid patient-level classification approach.
+
+### 1. Configure Model File Paths
+
+Modify the file [`cal-patient-thres-val-public.py`](https://github.com/kasikrit/IDA-THL-Classification/blob/main/cal-patient-thres-val-public.py) to specify the trained model files. Example configuration:
+
+```python
+def model_mapping_function(model_name):
+    model_root = config['DATA']['SAVEPATH']  # Ensure 'SAVEPATH' is set correctly in your config file
+    
+    model_mapping = {
+        'EfficientNetV2S': [
+            os.path.join(model_root, 'Linux-Fold-0-EfficientNetV2S-bal-aug-20250110-1607.hdf5'),
+            os.path.join(model_root, 'Linux-Fold-1-EfficientNetV2S-bal-aug-20250110-1607.hdf5'),
+            os.path.join(model_root, 'Linux-Fold-2-EfficientNetV2S-bal-aug-20250110-1607.hdf5'),
+            os.path.join(model_root, 'Linux-Fold-3-EfficientNetV2S-bal-aug-20250109-1903.hdf5'),
+            os.path.join(model_root, 'Linux-Fold-4-EfficientNetV2S-bal-aug-20250110-1607.hdf5'),
+        ],
+    }
+```
+
+## 2. Run Threshold Calculation
+
+Execute the script to calculate the optimal thresholds:
+
+```bash
+python cal-patient-thres-val-public.py
+```
+
+## 3. Output
+
+The script will output:
+
+- The average **T_upper** values for both:
+  - Mean-based threshold
+  - Argmax-based threshold
+- The average **T_lower** value, calculated as the 10th percentile across all validation folds.
+
+These threshold values are essential for applying the hybrid patient-level classification during the inference stage.
+
+```python
+Compute optimal thresholds across folds
+[Mean-Based] Processing Fold 0...
+[Mean-Based] Optimal Threshold for Fold 0: 0.682
+[Mean-Based] Processing Fold 1...
+[Mean-Based] Optimal Threshold for Fold 1: 0.461
+[Mean-Based] Processing Fold 2...
+[Mean-Based] Optimal Threshold for Fold 2: 0.647
+[Mean-Based] Processing Fold 3...
+[Mean-Based] Optimal Threshold for Fold 3: 0.614
+[Mean-Based] Processing Fold 4...
+[Mean-Based] Optimal Threshold for Fold 4: 0.560
+
+[Mean-Based] Averaged Optimal Threshold (T_upper): 0.593
+
+[Argmax-Based] Processing Fold 0...
+[Argmax-Based] Optimal Threshold for Fold 0: 0.784
+[Argmax-Based] Processing Fold 1...
+[Argmax-Based] Optimal Threshold for Fold 1: 0.428
+[Argmax-Based] Processing Fold 2...
+[Argmax-Based] Optimal Threshold for Fold 2: 0.717
+[Argmax-Based] Processing Fold 3...
+[Argmax-Based] Optimal Threshold for Fold 3: 0.663
+[Argmax-Based] Processing Fold 4...
+[Argmax-Based] Optimal Threshold for Fold 4: 0.578
+
+[Argmax-Based] Averaged Optimal Threshold (T_upper): 0.634
+
+Compute the 10th percentile (T_lower) for each fold using Mean-Based Fusion
+Processing Fold 0...
+10th Percentile (T_lower) for Fold 0: 0.119946
+Processing Fold 1...
+10th Percentile (T_lower) for Fold 1: 0.218088
+Processing Fold 2...
+10th Percentile (T_lower) for Fold 2: 0.603034
+Processing Fold 3...
+10th Percentile (T_lower) for Fold 3: 0.223927
+Processing Fold 4...
+10th Percentile (T_lower) for Fold 4: 0.133125
+
+Averaged Lower Threshold (T_lower): 0.259624
+
+```
