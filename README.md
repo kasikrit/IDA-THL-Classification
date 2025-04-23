@@ -13,7 +13,7 @@ Model interpretability was assessed using SHAP and Grad-CAM, which highlighted k
 
 Limitations include the use of a single-center dataset and the need for adaptive threshold optimization. Future work will focus on multi-center validation and real-world clinical integration. This study establishes a structured baseline for AI-assisted hematology screening, supporting early detection and improved clinical decision-making.
 
-# Hardware and Software Specifications
+## Hardware and Software Specifications
 
 All training, evaluation, and inference were performed on an NVIDIA A100-SXM4-80GB GPU running Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-50-generic x86_64). Dataset preparation, visualization, and presentation tasks were carried out on macOS 14.7.4 (23H420).
 
@@ -27,7 +27,7 @@ A complete example demonstrating model development and validation is available o
 
 
 
-# Creating a Python Environment
+## Creating a Python Environment
 
 We use [Anaconda](https://anaconda.org/). In the Anaconda command prompt, use the following commands:
 
@@ -45,7 +45,7 @@ pip install TensorFlow==2.11.0 scikit-learn==1.3.2 scipy==1.11.4 statsmodels==0.
 ## Available Dataset
 The dataset will be publicly availabled at [10.6084/m9.figshare.28779455](https://doi.org/10.6084/m9.figshare.28779455).
 
-# Training Models
+## Training Models
 
 1. Set up parameters in configCell.py as descripbed below:
 
@@ -148,4 +148,4 @@ config = configsCellDemo.get_config()
 ```python
 python train-cell2-demo.py
 ``` 
-
+## Hybrid Approach for Patient-Level Classification
