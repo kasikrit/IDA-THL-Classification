@@ -41,7 +41,7 @@ pip install TensorFlow==2.11.0 scikit-learn==1.3.2 scipy==1.11.4 statsmodels==0.
 ```
 
 ## Available Dataset
-The dataset will be publicly availabled at [10.6084/m9.figshare.28779455](https://doi.org/10.6084/m9.figshare.28779455).
+The dataset is publicly availabled at [10.6084/m9.figshare.28779455](https://doi.org/10.6084/m9.figshare.28779455).
 
 ## Training Models
 
