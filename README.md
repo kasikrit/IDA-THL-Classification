@@ -4,6 +4,8 @@ The code demonstrates the development of the hybrid AI-based patient-level class
 
 **Manuscript Title:** An AI-Based Decision Support Framework for Clinical Screening of Iron Deficiency Anemia and Thalassemia
 
+**Journal**: IEEE Access (Publication is in progress).
+
 **Abstract:**
 
 Iron deficiency anemia (IDA) and thalassemia (THL) are common hematological disorders that necessitate efficient and accurate screening for early diagnosis. Traditional blood smear analysis is labor-intensive, prone to subjectivity, and lacks reproducibility, highlighting the urgent need for AI-driven methods to improve diagnostic sensitivity and specificity.
