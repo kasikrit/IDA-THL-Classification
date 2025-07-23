@@ -4,7 +4,7 @@ The code demonstrates the development of the hybrid AI-based patient-level class
 
 **Manuscript Title:** An AI-Based Decision Support Framework for Clinical Screening of Iron Deficiency Anemia and Thalassemia
 
-**Journal**: IEEE Access (Publication is in progress).
+**Journal**: IEEE Access (Publication is in progress). DOI: 10.1109/ACCESS.2025.3592652
 
 **Abstract:**
 
